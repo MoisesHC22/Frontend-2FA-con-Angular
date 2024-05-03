@@ -17,7 +17,7 @@
                 <td>{{item.contrasena}}</td>
                 <td>{{item.correo}}</td>
                 <td>
-                    <button class="Eliminar" >Eliminar</button>
+                    <button class="Eliminar" (click)="item.idCuenta !== undefined ? eliminar(item.idCuenta) : null">Eliminar</button>
                 </td>
             </tr>
         }

@@ -23,6 +23,11 @@ export class FuncionesService {
   }
 
  crearCuenta(data: CuentasInterfaces) {
-   return this.httpClient.post(this.API + "/Home/singUp", data);
+   return this.httpClient.post(this.API + "/Home/signUp", data);
  } 
+
+ Eliminar(data: CuentasInterfaces){
+  return this.httpClient.post(this.API + "/Home/Eliminar", data);
+ }
+
 }
