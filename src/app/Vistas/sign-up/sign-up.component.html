@@ -1,0 +1,21 @@
+<p>Sign Up</p>
+
+<form [formGroup]="formulario" (ngSubmit)="guardar()">
+    <div>
+       <label for="nombre">Nombre:</label>
+       <input type="text" formControlName="nombre" placeholder="nombre">
+    </div>
+  
+    <div>
+      <label for="contrasena">Contraseña:</label>
+      <input type="text" formControlName="contrasena">
+    </div>
+  
+    <div>
+     <label for="correo">correo:</label>
+     <input type="text" formControlName="correo">
+    </div>
+  
+    <button type="submit" [disabled]="!formulario.valid">Crear</button>
+  
+  </form>
