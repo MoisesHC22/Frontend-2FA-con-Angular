@@ -3,6 +3,7 @@ import { FuncionesService } from '../../services/funciones.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { CuentasInterfaces } from '../../interfaces/cuentas.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,6 +16,7 @@ export class SignUpComponent {
 
   form = inject(FormBuilder);
   httpservice = inject(FuncionesService);
+  rutas = inject(Router);
 
   formulario = this.form.group({
     nombre: ['', [Validators.required]],
@@ -34,6 +36,7 @@ export class SignUpComponent {
 
     this.httpservice.crearCuenta(data).subscribe(()=>{
        console.log("success");
+       this.rutas.navigateByUrl('/Home');
     });
   }
 }

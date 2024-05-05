@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   httpserver = inject(FuncionesService);
 
   formulario = this.form.group({
-    idCuenta: [0, [Validators.required]],
+    idCuenta: [0],
     nombre: [''],
     contrasena: [''],
     correo: [''],
@@ -66,6 +66,33 @@ export class HomeComponent implements OnInit {
     } else {
       console.log("idCuenta es undefined");
     }
-    
   }
+
+
+  
+    // Activar 2FA
+
+    activar(correo: string | undefined){
+      if (correo !== undefined){
+      const data: CuentasInterfaces = {
+        idCuenta: this.formulario.value.idCuenta!,
+        nombre: this.formulario.value.nombre!,
+        contrasena: this.formulario.value.contrasena!,
+        correo: correo,
+        secretCode: this.formulario.value.secretcode!
+      };
+       this.httpserver.Activar2FA(data).subscribe(()=>{
+         console.log("success");
+       });
+      } else {
+        console.log("El correo es undefined");
+      }
+    }
+    
+
+    recargar(): void{
+      window.location.reload();
+    }
+
+
 }

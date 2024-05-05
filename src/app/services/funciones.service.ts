@@ -14,9 +14,6 @@ export class FuncionesService {
   
   constructor(private httpClient: HttpClient) { }
 
-  cuentaForm = new FormControl({
-    
-  }) 
 
   getHome(): Observable<any> {
     return this.httpClient.get(this.API + "/Home/Registros").pipe(res => res);
@@ -29,5 +26,18 @@ export class FuncionesService {
  Eliminar(data: CuentasInterfaces){
   return this.httpClient.post(this.API + "/Home/Eliminar", data);
  }
+
+ Activar2FA(data: CuentasInterfaces){
+  return this.httpClient.post(this.API + "/Home/Activar2FA", data);
+ }
+ 
+ ObtenerQR(correo: string): Observable<any>{
+  return this.httpClient.get(this.API + "/Home/GetQRCodeAsImage?correo=" + correo);
+ }
+
+ Validar(correo: string, code: string): Observable<any>{
+   return this.httpClient.get(this.API + "/Home/ValidarQRCode?correo="+ correo +"&code=" + code);
+ }
+
 
 }

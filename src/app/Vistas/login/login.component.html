@@ -1,1 +1,28 @@
-<p>login works!</p>
+<p>login</p>
+
+<form [formGroup]="credenciales" (ngSubmit)="generarQR()">
+    <div>
+        <div class="DtCorreo">
+            <label> Correo: </label>
+            <input type="email" formControlName="correo">
+        </div>
+        
+        <div *ngIf="qrCode">
+            <img [src]="qrCode" alt="QR Code">
+         </div>
+
+        <div class="DtContraseña">
+        @if(qrCode == null){
+           <label>Contraseña: </label>
+        } @else {
+                <label>Código</label>
+        }
+           <input type="text" formControlName="contrasena">
+        </div>
+
+        <button type="submit">generarQR</button>
+    </div>
+</form>
+  <a [routerLink]="['/Sing-Up']">Registrarte</a>
+
+

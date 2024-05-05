@@ -7,6 +7,7 @@
             <th>Contraseña</th>
             <th>Correo</th>
             <th>Opciones</th>
+            <th>2FA</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,12 @@
                 <td>
                     <button class="Eliminar" (click)="item.idCuenta !== undefined ? eliminar(item.idCuenta) : null">Eliminar</button>
                 </td>
+                @if (item.secretCode == null)
+                {
+                    <td>
+                        <input type="radio" class="Activar" (click)="item.correo !== undefined ? activar(item.correo) : null" (change)="recargar()">
+                    </td>
+                }
             </tr>
         }
     </tbody>
